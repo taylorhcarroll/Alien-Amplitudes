@@ -1,18 +1,17 @@
 
 function highestAmpSeason(dt, ns) {
-    let seasonLength = (dt.length / ns)
-    let arrOfSeasons = chunkArray(dt, ns)
+
+    let arrOfSeasons = splitSeasons(dt, ns)
     
     //helper method to divide seasons
-    function chunkArray(myArray, chunk_size){
-        var index = 0;
-        var arrayLength = myArray.length;
+    function splitSeasons(arrOfDays, seasonLength){
+        var i = 0;
+        var arrayLength = arrOfDays.length;
         var tempArray = [];
         
-        for (index = 0; index < arrayLength; index += chunk_size) {
-            myChunk = myArray.slice(index, index+chunk_size);
-            // Do something if you want with the group
-            tempArray.push(myChunk);
+        for (i = 0; i < arrayLength; i += seasonLength) {
+            singleSeason = arrOfDays.slice(i, i+seasonLength);
+            tempArray.push(singleSeason);
         }
     console.log(tempArray, "tempArray")
         return tempArray;
